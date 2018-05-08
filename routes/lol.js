@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var apiKey = require('../apiKey')
+var apiKey = require('../apiKey');
 
 const config = {
   headers: apiKey
