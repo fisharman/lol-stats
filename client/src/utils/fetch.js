@@ -40,6 +40,7 @@ const matchBaseUrl = `/lol/match/v3/matches/`;
 
 export const fetchMatch = async (gameIDs) => {
   // TODO: order the response according to gameIDs
+  // TODO: split fetch so limit is not hit
 
   let data = [];
   let promises = [];
