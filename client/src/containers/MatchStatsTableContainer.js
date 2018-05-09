@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchSummoner, fetchMatchList, fetchMatch } from '../utils/fetch';
+import MatchStatsContainer from './MatchStatsContainer';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Error from '../components/Error';
 
@@ -72,7 +73,7 @@ const computeResults = async () => {
 }
 
 
-class MatchStatsContainer extends Component {
+class MatchStatsTableContainer extends Component {
   constructor(){
       super();
       this.state = {
@@ -103,9 +104,9 @@ class MatchStatsContainer extends Component {
     }
 
     return(
-      <div></div>
+      <MatchStatsContainer computed={this.state.computed}/>
     );
   }
 }
 
-export default MatchStatsContainer;
+export default MatchStatsTableContainer;
