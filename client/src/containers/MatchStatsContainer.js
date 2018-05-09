@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchSummoner, fetchMatchList, fetchMatch } from '../utils/fetch';
+import LoadingSpinner from '../components/LoadingSpinner';
 import Error from '../components/Error';
 
 const testName = `RiotSchmick`;
@@ -84,14 +85,12 @@ class MatchStatsContainer extends Component {
       }
   }
 
-  // fetch data here
   componentDidMount() {
     computeResults()
     .then(res => this.setState(res))
     .then(() => {
-      console.log(this.state);
-      this.setState({loaded: true})}
-    );
+      this.setState({loaded: true})
+    });
   }
 
   render() {
@@ -99,6 +98,9 @@ class MatchStatsContainer extends Component {
       return <Error error={this.state.error}/>;
     }
 
+    if (!this.state.loaded){
+      return (<LoadingSpinner loading={!this.state.loaded} />);
+    }
 
     return(
       <div></div>
