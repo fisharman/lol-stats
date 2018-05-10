@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const summonerBaseUrl = `/lol/summoner/v3/summoners/by-name/`;
-
 export const fetchSummoner = async (name) => {
+  const summonerBaseUrl = `/lol/summoner/v3/summoners/by-name/`;
+
   let url = summonerBaseUrl + name;
   let data = {};
 
@@ -18,9 +18,9 @@ export const fetchSummoner = async (name) => {
   return data;
 }
 
-const matchListBaseUrl = `/lol/match/v3/matchlists/by-account/`
-
 export const fetchMatchList = async (matchID, endIndex) => {
+  const matchListBaseUrl = `/lol/match/v3/matchlists/by-account/`
+
   let url = matchListBaseUrl + matchID;
   let params = {params: {endIndex: endIndex}};
   let data = [];
@@ -36,11 +36,10 @@ export const fetchMatchList = async (matchID, endIndex) => {
   return data;
 }
 
-const matchBaseUrl = `/lol/match/v3/matches/`;
-
 export const fetchMatch = async (gameIDs) => {
   // TODO: order the response according to gameIDs
   // TODO: split fetch so limit is not hit
+  const matchBaseUrl = `/lol/match/v3/matches/`;
 
   let data = [];
   let promises = [];
@@ -53,6 +52,93 @@ export const fetchMatch = async (gameIDs) => {
     data = res.map(data => data.data)
   })
   .catch(error => Promise.reject(error));
+
+  return data;
+}
+
+export const fetchChampionImageById = async(championID) => {
+  const championBaseUrl = `/static-data/v3/champions/`;
+  const imgBaseUrl = `http://ddragon.leagueoflegends.com/cdn/8.9.1/img/champion/`;
+
+  let url = championBaseUrl + championID;
+  let params = {params: {locale: 'en_US', champData: 'image'}};
+  let imgName, data;
+
+  await axios.get(url, params)
+  .then( res => {
+    imgName = res.data.image.full;
+  })
+  .catch( error => {
+    return Promise.reject(error);
+  })
+
+  if (imgName){
+    await axios.get(imgBaseUrl + imgName)
+    .then( res => {
+      data = res.data;
+    })
+    .catch( error => {
+      return Promise.reject(error);
+    })
+  }
+
+  return data;
+}
+
+export const fetchSpellImageById = async(spellID) => {
+  const spellBaseUrl = `/static-data/v3/summoner-spells/`;
+  const imgBaseUrl = `http://ddragon.leagueoflegends.com/cdn/8.9.1/img/spell/`;
+
+  let url = spellBaseUrl + spellID;
+  let params = {params: {locale: 'en_US', spellData: 'image'}};
+  let imgName, data;
+
+  await axios.get(url, params)
+  .then( res => {
+    imgName = res.data.image.full;
+  })
+  .catch( error => {
+    return Promise.reject(error);
+  })
+
+  if (imgName){
+    await axios.get(imgBaseUrl + imgName)
+    .then( res => {
+      data = res.data;
+    })
+    .catch( error => {
+      return Promise.reject(error);
+    })
+  }
+
+  return data;
+}
+
+export const fetchItemImageById = async(itemID) => {
+  const runesBaseUrl = `/static-data/v3/items/`;
+  const imgBaseUrl = `http://ddragon.leagueoflegends.com/cdn/8.9.1/img/item/`;
+
+  let url = runesBaseUrl + itemID;
+  let params = {params: {locale: 'en_US', itemData: 'image'}};
+  let imgName, data;
+
+  await axios.get(url, params)
+  .then( res => {
+    imgName = res.data.image.full;
+  })
+  .catch( error => {
+    return Promise.reject(error);
+  })
+
+  if (imgName){
+    await axios.get(imgBaseUrl + imgName)
+    .then( res => {
+      data = res.data;
+    })
+    .catch( error => {
+      return Promise.reject(error);
+    })
+  }
 
   return data;
 }
