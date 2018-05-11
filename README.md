@@ -3,16 +3,6 @@ Stack:
 - Front-end: React.js
 - Back-end: Node.js (For serving static requests and forwarding of dynamic requests. Needed due to Riot API forbids CORS and rate limiting issues)
 
-## Table of Contents
-
-- [Install Instruction](#install-instruction)
-  - [Prerequisites](#prerequisites)
-  - [npm test](#npm-test)
-- [Available Scripts](#available-scripts)
-
-- [Available Scripts](#available-scripts)
-  - [npm run start](#npm-run-start)
-
 ## Prerequisites
 1.  Install [npm](https://www.npmjs.com/)
 2.  Install [node](https://nodejs.org/en/)
