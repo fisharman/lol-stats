@@ -62,7 +62,7 @@ export const fetchChampionImageById = async(championID) => {
 
   let url = championBaseUrl + championID;
   let params = {params: {locale: 'en_US', champData: 'image'}};
-  let imgName, data;
+  let imgName;
 
   await axios.get(url, params)
   .then( res => {
@@ -71,7 +71,8 @@ export const fetchChampionImageById = async(championID) => {
   .catch( error => {
     return Promise.reject(error);
   })
-
+  return imgBaseUrl + imgName;
+/*
   if (imgName){
     await axios.get(imgBaseUrl + imgName)
     .then( res => {
@@ -82,7 +83,7 @@ export const fetchChampionImageById = async(championID) => {
     })
   }
 
-  return data;
+  return data;*/
 }
 
 export const fetchSpellImageById = async(spellID) => {
@@ -91,7 +92,7 @@ export const fetchSpellImageById = async(spellID) => {
 
   let url = spellBaseUrl + spellID;
   let params = {params: {locale: 'en_US', spellData: 'image'}};
-  let imgName, data;
+  let imgName;
 
   await axios.get(url, params)
   .then( res => {
@@ -101,6 +102,8 @@ export const fetchSpellImageById = async(spellID) => {
     return Promise.reject(error);
   })
 
+  return imgBaseUrl + imgName;
+/*
   if (imgName){
     await axios.get(imgBaseUrl + imgName)
     .then( res => {
@@ -111,16 +114,19 @@ export const fetchSpellImageById = async(spellID) => {
     })
   }
 
-  return data;
+  return data;*/
 }
 
 export const fetchItemImageById = async(itemID) => {
+  if (itemID === 0)
+    return null;
+
   const runesBaseUrl = `/static-data/v3/items/`;
   const imgBaseUrl = `http://ddragon.leagueoflegends.com/cdn/8.9.1/img/item/`;
 
   let url = runesBaseUrl + itemID;
   let params = {params: {locale: 'en_US', itemData: 'image'}};
-  let imgName, data;
+  let imgName;
 
   await axios.get(url, params)
   .then( res => {
@@ -130,6 +136,8 @@ export const fetchItemImageById = async(itemID) => {
     return Promise.reject(error);
   })
 
+  return imgBaseUrl + imgName;
+/*
   if (imgName){
     await axios.get(imgBaseUrl + imgName)
     .then( res => {
@@ -141,4 +149,5 @@ export const fetchItemImageById = async(itemID) => {
   }
 
   return data;
+  */
 }

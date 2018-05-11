@@ -1,0 +1,79 @@
+.match-stats-box{
+  position:relative;
+  margin: 1rem;
+  height: 180px;
+  background: darkgray;
+  overflow: auto;
+  font-family: sans-serif;
+}
+
+.match-stats-box .game-stats {
+  margin-top: 20px;
+}
+
+.game-stats .summoner-name{
+   font-weight: bolder;
+   font-size: 150%
+}
+
+.game-stats .game-mode{
+  font-size: 90%;
+}
+
+.game-stats .game-creation{
+  font-size: 90%;
+}
+
+.game-stats .Victory{
+  position: relative;
+  font-weight: bold;
+  font-size: 110%;
+  color: green;
+  top: 10px;
+}
+
+.game-stats .Defeat{
+  position: relative;
+  font-weight: bold;
+  font-size: 110%;
+  color: darkred;
+  top: 10px;
+}
+
+.game-stats .game-duration{
+  position: relative;
+  top: 10px;
+  font-size: 90%;
+}
+
+.match-stats-box .game-setting-info {
+  margin: auto;
+}
+
+.game-setting-info .spell2{
+  margin-top: 5px;
+}
+
+.match-stats-box .stats {
+  margin: auto;
+}
+
+.stats .text-death{
+  color: darkred;
+}
+
+.stats .kda{
+  font-size: 150%;
+}
+
+.stats .kdar{
+  font-size: 150%;
+}
+
+.match-stats-box .items-img {
+  margin: 3px 3px;
+  display: inline-block;
+  background-color: gray;
+  height:64px;
+  weight:64px;
+}

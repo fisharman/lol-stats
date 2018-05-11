@@ -5,8 +5,8 @@ import MatchStatsContainer from './MatchStatsContainer';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Error from '../components/Error';
 
-const testName = `RiotSchmick`;
-const retrivalLimit = 3;
+const testName = `BFY Meowington`;
+const retrivalLimit = 10;
 
 const computeResults = async () => {
   let nextState = {
@@ -16,8 +16,6 @@ const computeResults = async () => {
     computed: [],
     error: null,
   }
-
-  // TODO: separate out error from nextState
 
   nextState.user = await fetchSummoner(testName).catch(error => {nextState.error = error});
   if (nextState.user) {
@@ -47,6 +45,7 @@ const computeResults = async () => {
       computed['gameDuration'] = match.gameDuration; // game length
       computed['name'] = nextState.user.name; // summoner name
       computed['win'] = match.participants[participantId-1].stats.win; // win or loose
+      computed['gameMode'] = match.gameMode;
       computed['championId'] = match.participants[participantId-1].championId; // champion played
       computed['champLevel'] = match.participants[participantId-1].stats.champLevel; // champion level
 
@@ -80,11 +79,12 @@ class MatchStatsTableContainer extends Component {
         user: {},
         matchList: [],
         matchData: [],
-        computed: {},
-        loaded: false,
+        computed: [],
+        loaded: true,
         error: null
       }
   }
+
 
   componentDidMount() {
     computeResults()
@@ -103,8 +103,16 @@ class MatchStatsTableContainer extends Component {
       return (<LoadingSpinner loading={!this.state.loaded} />);
     }
 
+    let toRender = [];
+    this.state.computed.map((computed, idx) => {
+      return toRender.push(<MatchStatsContainer key={idx} computed={computed}/>)
+    })
+
     return(
-      <MatchStatsContainer computed={this.state.computed}/>
+      // return multiple matchstats container
+      <div>
+        {toRender}
+      </div>
     );
   }
 }
