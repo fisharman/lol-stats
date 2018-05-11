@@ -21,10 +21,10 @@ This will install NPM packages for the React project
 ## Change API Key
 **IMPORTANT**<br> 
 API key is NOT included for security reasons.  
-Supply a valid Riot API key into the [/apiKey.js](apiKey.js#L1) file in the form of `'RGAPI-...........'` before `npm run start` or else you will get server error.
+Supply a valid Riot API key into [/apiKey.js](apiKey.js#L1) file in the form of `'RGAPI-...........'` before `npm run start` or else you will get server error.
 
 ## Change Search Summoner and Matches Returned
-The search target and number of matches reutrned is currently hard coded. To change edit the following file.<br>
+The search target and number of matches reutrned is currently hard coded. To change, edit the following file:<br>
 [/client/src/containers/MatchStatsTableContainer.js](/client/src/containers/MatchStatsTableContainer.js#L8)
 
 ## Available Scripts
