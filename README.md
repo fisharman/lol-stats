@@ -35,3 +35,6 @@ In main project directory (not client), you can run:
 
 This will start both Node and React app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Preview
+![Render Sample](/static/lol-stats-screen.jpg)
